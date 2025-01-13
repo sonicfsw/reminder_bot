@@ -19,13 +19,13 @@ user_data = {}
 
 # Названия месяцев
 MONTH_NAMES = [
-    "Январь", "Ф-February", "Март", "Апрель", "Май", "Июнь",
+    "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
     "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
 ]
 
 
-# Функция для создания клавиатуры
-def create_main_menu():
+# Функция для создания обычных кнопок
+def create_reply_keyboard():
     markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add(telebot.types.KeyboardButton('Добавить напоминание'),
                telebot.types.KeyboardButton('Список напоминаний'))
@@ -33,10 +33,30 @@ def create_main_menu():
     return markup
 
 
+# Функция для создания инлайн-кнопок
+def create_inline_keyboard():
+    markup = InlineKeyboardMarkup()
+    markup.add(InlineKeyboardButton("Добавить напоминание", callback_data='add_reminder'))
+    markup.add(InlineKeyboardButton("Список напоминаний", callback_data='list_reminders'))
+    markup.add(InlineKeyboardButton("Удалить напоминание", callback_data='delete_reminder'))
+    return markup
+
+
 # Команда /start
 @bot.message_handler(commands=['start'])
 def start_message(message: Message):
-    bot.reply_to(message, "Привет! Я помогу напомнить о важных событиях.", reply_markup=create_main_menu())
+    if message.chat.type == 'private':  # Личный чат
+        bot.send_message(
+            message.chat.id,
+            "Привет! Я помогу напомнить о важных событиях. Выберите действие:",
+            reply_markup=create_reply_keyboard()
+        )
+    else:  # Групповой чат
+        bot.send_message(
+            message.chat.id,
+            "Привет! Я помогу напомнить о важных событиях. Выберите действие:",
+            reply_markup=create_inline_keyboard()
+        )
 
 
 # Генерация календаря
@@ -74,12 +94,26 @@ def generate_calendar(year, month):
     return markup
 
 
-# Кнопка "Добавить напоминание"
+# Обработка команды "Добавить напоминание" для личных чатов
 @bot.message_handler(func=lambda message: message.text == 'Добавить напоминание')
-def add_reminder(message: Message):
-    chat_id = message.chat.id
+def add_reminder_private(message: Message):
+    if message.chat.type == 'private':
+        chat_id = message.chat.id
+        today = datetime.now()
+        bot.send_message(chat_id, "Выберите дату:", reply_markup=generate_calendar(today.year, today.month))
+
+
+# Обработка инлайн-кнопки "Добавить напоминание" для групп
+@bot.callback_query_handler(func=lambda call: call.data == 'add_reminder')
+def add_reminder_group(call: CallbackQuery):
+    chat_id = call.message.chat.id
     today = datetime.now()
-    bot.send_message(chat_id, "Выберите дату:", reply_markup=generate_calendar(today.year, today.month))
+    bot.edit_message_text(
+        "Выберите дату:",
+        chat_id,
+        call.message.message_id,
+        reply_markup=generate_calendar(today.year, today.month)
+    )
 
 
 # Обработка выбора даты
@@ -92,14 +126,7 @@ def handle_calendar(call: CallbackQuery):
     user_data[chat_id] = {"date": selected_date}
     new_text = f"Вы выбрали дату: {selected_date.strftime('%Y-%m-%d')}\nТеперь введите время в формате чч:мм:"
 
-    if call.message.text != new_text:
-        bot.edit_message_text(
-            new_text,
-            chat_id,
-            call.message.message_id
-        )
-    else:
-        bot.answer_callback_query(call.id, "Дата уже выбрана.")
+    bot.edit_message_text(new_text, chat_id, call.message.message_id)
     bot.register_next_step_handler_by_chat_id(chat_id, get_time)
 
 
@@ -159,8 +186,7 @@ def get_reminder_text(message: Message):
                               args=[chat_id, message.text, date.strftime("%Y-%m-%d %H:%M")])
 
     bot.send_message(chat_id,
-                     f"Напоминание добавлено на {selected_date.strftime('%Y-%m-%d')} {selected_time.strftime('%H:%M')}:\n{message.text}",
-                     reply_markup=create_main_menu())
+                     f"Напоминание добавлено на {selected_date.strftime('%Y-%m-%d')} {selected_time.strftime('%H:%M')}:\n{message.text}")
     user_data.pop(chat_id, None)
 
 
@@ -169,26 +195,26 @@ def send_reminder(chat_id, reminder_text, date_time):
     bot.send_message(chat_id, f"Напоминание на {date_time}: {reminder_text}")
 
 
-# Кнопка "Список напоминаний"
-@bot.message_handler(func=lambda message: message.text == 'Список напоминаний')
-def list_reminders(message: Message):
-    chat_id = message.chat.id
+# Обработка инлайн-кнопки "Список напоминаний"
+@bot.callback_query_handler(func=lambda call: call.data == 'list_reminders')
+def list_reminders(call: CallbackQuery):
+    chat_id = call.message.chat.id
     reminders = list(reminders_collection.find({"chat_id": chat_id}))
 
     if not reminders:
-        bot.send_message(chat_id, "У вас нет запланированных напоминаний.")
+        bot.edit_message_text("У вас нет запланированных напоминаний.", chat_id, call.message.message_id)
     else:
         response = "Ваши напоминания:\n"
         for reminder in reminders:
             response += f"- {reminder['date']} {reminder['time']}: {reminder['text']}\n"
-        bot.send_message(chat_id, response)
+        bot.edit_message_text(response, chat_id, call.message.message_id)
 
 
-# Кнопка "Удалить напоминание"
-@bot.message_handler(func=lambda message: message.text == 'Удалить напоминание')
-def delete_reminder_prompt(message: Message):
-    bot.send_message(message.chat.id,
-                     "Введите дату и время напоминания, которое нужно удалить, в формате:\nгггг-мм-дд чч:мм")
+# Обработка инлайн-кнопки "Удалить напоминание"
+@bot.callback_query_handler(func=lambda call: call.data == 'delete_reminder')
+def delete_reminder_prompt(call: CallbackQuery):
+    bot.edit_message_text("Введите дату и время напоминания, которое нужно удалить, в формате:\nгггг-мм-дд чч:мм",
+                          call.message.chat.id, call.message.message_id)
 
 
 # Удаление напоминания

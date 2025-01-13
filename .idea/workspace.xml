@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5432cf07-1f37-4656-81c9-f2f9cfad0837" name="Changes" comment="Написан бот ддля напоминаний с фугкционалом:&#10;1. Добавление напоминания через интерактивный календарь&#10;2. Просмотр списка напоминаний&#10;3. Удаление напоминаний">
+      <change beforePath="$PROJECT_DIR$/reminder_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/reminder_bot.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;sonicfsw&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:/sonicfsw/reminder_bot.git&quot;,
+    &quot;accountId&quot;: &quot;7ea1526d-daac-4745-9e6a-091bd15d3707&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2rW9xl6FoMJIPTvPMU3a3pyliSy" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.reminder_bot.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;
+    ]
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PY-241.18968.29" />
+        <option value="bundled-python-sdk-f5635417b835-2767605e8bc2-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.18968.29" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5432cf07-1f37-4656-81c9-f2f9cfad0837" name="Changes" comment="" />
+      <created>1736664213004</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1736664213004</updated>
+      <workItem from="1736664214749" duration="6845000" />
+      <workItem from="1736740087242" duration="796000" />
+    </task>
+    <task id="LOCAL-00001" summary="Написан бот ддля напоминаний с фугкционалом:&#10;1. Добавление напоминания через интерактивный календарь&#10;2. Просмотр списка напоминаний&#10;3. Удаление напоминаний">
+      <option name="closed" value="true" />
+      <created>1736678700718</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1736678700718</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Написан бот ддля напоминаний с фугкционалом:&#10;1. Добавление напоминания через интерактивный календарь&#10;2. Просмотр списка напоминаний&#10;3. Удаление напоминаний">
+      <option name="closed" value="true" />
+      <created>1736678832321</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1736678832321</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Написан бот ддля напоминаний с фугкционалом:&#10;1. Добавление напоминания через интерактивный календарь&#10;2. Просмотр списка напоминаний&#10;3. Удаление напоминаний">
+      <option name="closed" value="true" />
+      <created>1736681331777</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1736681331777</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Написан бот ддля напоминаний с фугкционалом:&#10;1. Добавление напоминания через интерактивный календарь&#10;2. Просмотр списка напоминаний&#10;3. Удаление напоминаний" />
+    <option name="LAST_COMMIT_MESSAGE" value="Написан бот ддля напоминаний с фугкционалом:&#10;1. Добавление напоминания через интерактивный календарь&#10;2. Просмотр списка напоминаний&#10;3. Удаление напоминаний" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/reminder_bot$reminder_bot.coverage" NAME="reminder_bot Coverage Results" MODIFIED="1736740884260" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/reminder_bot$main.coverage" NAME="main Coverage Results" MODIFIED="1736668720115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
