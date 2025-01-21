@@ -4,7 +4,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from pymongo import MongoClient
 from datetime import datetime, timedelta, date
 
-API_TOKEN = '7624039413:AAHAwwvFlI89RlgwLr_82MSZpYVgH9hlQmw'
+API_TOKEN = 'Yor tokken'
 
 client = MongoClient('mongodb://localhost:27017/')
 db = client['reminder_bot']
